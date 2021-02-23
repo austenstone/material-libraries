@@ -1,6 +1,15 @@
 {
   "name": "material-icon-list",
   "version": "0.0.1",
+  "author": {
+    "name": "Austen Stone"
+  },
+  "scripts": {
+    "copy-readme": "cp ./README.md ./../../dist/material-icon-list",
+    "package": "ng build material-icon-list --prod && npm run copy-readme && npm run npm_pack",
+    "publish": "npm run package && npm run npm_publish",
+    "npm_publish": "cd ./../../dist/material-icon-list && npm publish"
+  },
   "peerDependencies": {
     "@angular/common": "^11.2.1",
     "@angular/core": "^11.2.1",

@@ -4,6 +4,25 @@ Simple material icon picker.
 
 ![Material icon picker](https://github.com/astone2014/material-libraries/blob/master/chrome_3p35FKoOLG.png?raw=true)
 
+# Getting Started
+```typescript
+<app-material-icon-list [(icon)]="icon"></app-material-icon-list>
+```
+
+## Menu
+```typescript
+<button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+  <mat-icon>{{icon}}</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <app-material-icon-list [(icon)]="icon" (iconChange)="menuTrigger.closeMenu()"></app-material-icon-list>
+</mat-menu>
+```
+## Customize
+```typescript
+<app-material-icon-list [(icon)]="icon" color="accent" appearance="standard"></app-material-icon-list>
+```
+
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
 ## Code scaffolding

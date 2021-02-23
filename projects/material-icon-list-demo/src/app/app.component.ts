@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'material-icon-list-demo';
-  icon = '';
+  icon = 'insights';
 }

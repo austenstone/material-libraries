@@ -1,4 +1,14 @@
 <div style="width: 432px">
   <app-material-icon-list [(icon)]="icon"></app-material-icon-list>
 </div>
+
+<button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+  <mat-icon>{{icon}}</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <app-material-icon-list [(icon)]="icon" (iconChange)="menuTrigger.closeMenu()"></app-material-icon-list>
+</mat-menu>
+
+<app-material-icon-list [(icon)]="icon" color="accent" appearance="standard"></app-material-icon-list>
+
 <router-outlet></router-outlet>
