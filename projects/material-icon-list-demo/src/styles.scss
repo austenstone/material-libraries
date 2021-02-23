@@ -40,5 +40,3 @@ $dark-theme:   mat-dark-theme((
 .unicorn-dark-theme {
   @include angular-material-color($dark-theme);
 }
-
-@include angular-material-color($dark-theme);
