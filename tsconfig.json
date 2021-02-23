@@ -9,6 +9,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "material-icon-list": [
+        "dist/material-icon-list/material-icon-list",
+        "dist/material-icon-list"
+      ]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

@@ -1,0 +1,23 @@
+<mat-card class="icon-list-card">
+  <div class="icon-list-controls padded">
+    <div class="icon-list-icon">
+      <mat-icon matPrefix [color]="color">{{icon.length ? icon : 'help_outline'}}</mat-icon>
+    </div>
+    <mat-form-field class="icon-list-form-field" [appearance]="appearance" [color]="color">
+      <input [formControl]="filterInput" matInput [placeholder]="icon || 'Select an icon...'" autocomplete="off">
+      <button (click)="filterInput.setValue('')" *ngIf="filterInput.value.length" matSuffix mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <mat-card-content>
+    <ng-container *ngFor="let i of (filteredIcons | async)">
+      <button mat-icon-button>
+        <mat-icon (click)="selectIcon(i.name)" [color]="color">{{i.name}}</mat-icon>
+      </button>
+    </ng-container>
+  </mat-card-content>
+  <div class="icon-list-controls-bottom">
+    <mat-paginator [length]="filteredIconslength" [pageSize]="60" [pageSizeOptions]="[10, 20, 40, 60]"></mat-paginator>
+  </div>
+</mat-card>

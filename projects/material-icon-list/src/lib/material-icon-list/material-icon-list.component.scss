@@ -1,0 +1,51 @@
+.icon-list-card {
+  position: relative;
+  max-width: 100%;
+  padding: 16px 0;
+  .padded {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  mat-card-content {
+    max-height: 240px;
+    overflow-y: auto;
+    max-width: 100%;
+    padding: 0 16px;
+    margin-bottom: 0;
+  }
+  .icon-list-controls {
+    position: sticky;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: white;
+    ::ng-deep .mat-form-field-wrapper {
+      margin-bottom: -1.25em
+    }
+    .icon-list-icon {
+      user-select: none;
+      margin-right:16px;
+      mat-icon {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  .icon-list-controls-bottom {
+    position: sticky;
+    z-index: 99;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: white;
+  }
+  .icon-list-controls mat-form-field {
+    width: 100%;
+  }
+
+}
