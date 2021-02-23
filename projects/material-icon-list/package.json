@@ -5,9 +5,10 @@
     "name": "Austen Stone"
   },
   "scripts": {
-    "copy-readme": "cp ./README.md ./../../dist/material-icon-list",
-    "package": "ng build material-icon-list --prod && npm run copy-readme && npm run npm_pack",
     "publish": "npm run package && npm run npm_publish",
+    "package": "ng build material-icon-list --prod && npm run copy-readme && npm run npm_pack",
+    "copy-readme": "cp ./README.md ./../../dist/material-icon-list",
+    "npm_pack": "cd ./../../dist/material-icon-list && npm pack",
     "npm_publish": "cd ./../../dist/material-icon-list && npm publish"
   },
   "peerDependencies": {
