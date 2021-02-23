@@ -43,7 +43,9 @@ export class MaterialIconListComponent implements OnInit {
     }
 
     this.filteredIcon$ = merge(...[
-      this.filterInput.valueChanges.pipe(startWith(''), tap(() => this.paginator?.firstPage())),
+      this.filterInput.valueChanges.pipe(
+        tap(() => this.paginator?.firstPage())
+      ),
       this.pageEvent$.asObservable()
     ]).pipe(
       map(() => {
