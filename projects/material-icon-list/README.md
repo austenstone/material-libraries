@@ -2,6 +2,8 @@
 
 Simple material icon picker.
 
+![Material icon picker](https://github.com/astone2014/material-libraries/blob/master/chrome_3p35FKoOLG.png?raw=true)
+
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
 ## Code scaffolding
