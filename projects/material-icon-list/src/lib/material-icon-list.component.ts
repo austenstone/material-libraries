@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { merge, Observable } from 'rxjs';
+import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { map, startWith, tap } from "rxjs/operators";
 import { FormControl } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 // import { MatSort } from '@angular/material/sort';
 import { IconElement, IconMetadata, iconMetdata } from './material-icons';
 @Component({
@@ -13,7 +13,7 @@ import { IconElement, IconMetadata, iconMetdata } from './material-icons';
   templateUrl: './material-icon-list.component.html',
   styleUrls: ['./material-icon-list.component.scss']
 })
-export class MaterialIconListComponent implements OnInit, AfterViewInit {
+export class MaterialIconListComponent implements OnInit {
   @Input() icon: string = '';
   @Output() iconChange: EventEmitter<string> = new EventEmitter();
   @Input() color: ThemePalette;
@@ -23,6 +23,8 @@ export class MaterialIconListComponent implements OnInit, AfterViewInit {
   @Input() sortBy: 'name' | 'version' | 'popularity' = 'popularity'
   @Input() hidePageSize: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+  // MatPaginator Output
+  pageEvent$: BehaviorSubject<PageEvent> = new BehaviorSubject<PageEvent>({ pageIndex: 0, length: 0, pageSize: this.pageSize, previousPageIndex: 0});
   // @ViewChild(MatSort) sort: MatSort | null = null;
   iconMetdata: IconMetadata = iconMetdata;
   filterInput: FormControl = new FormControl('');
@@ -34,7 +36,6 @@ export class MaterialIconListComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    console.log('sort', this.sortBy);
     if (this.sortBy === 'popularity') {
       this.iconMetdata.icons = this.iconMetdata.icons.sort((a, b) => b.popularity - a.popularity);
     } else if (this.sortBy === 'name') {
@@ -42,15 +43,12 @@ export class MaterialIconListComponent implements OnInit, AfterViewInit {
     } else if (this.sortBy === 'version') {
       this.iconMetdata.icons = this.iconMetdata.icons.sort((a, b) => b.version - a.version);
     }
-  }
 
-  ngAfterViewInit() {
-    let trigger$ = [
-      this.filterInput.valueChanges.pipe(startWith(''), tap(() => this.paginator?.firstPage()))
-    ];
-    if (this.paginator?.page) trigger$.push(this.paginator.page);
-    this.filteredIcons = merge(...trigger$).pipe(
-      map(value => {
+    this.filteredIcons = merge(...[
+      this.filterInput.valueChanges.pipe(startWith(''), tap(() => this.paginator?.firstPage())),
+      this.pageEvent$.asObservable()
+    ]).pipe(
+      map(([value, page]) => {
         const lower = this.filterInput.value.toLowerCase();
         return this.iconMetdata.icons.filter((icon: IconElement) => {
           let match = false;
@@ -63,13 +61,10 @@ export class MaterialIconListComponent implements OnInit, AfterViewInit {
       }),
       tap((icons) => this.filteredIconslength = icons.length),
       map((icons) => {
-        if (this.paginator) {
-          const start = this.paginator.pageIndex * this.paginator.pageSize;
-          const end = start + this.paginator.pageSize;
-          return icons.slice(start, end)
-        } else {
-          return icons;
-        }
+        const paginator = this.pageEvent$.value;
+        const start = paginator.pageIndex * paginator.pageSize;
+        const end = start + paginator.pageSize;
+        return icons.slice(start, end)
       })
     );
   }

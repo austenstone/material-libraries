@@ -4,7 +4,8 @@
       <mat-icon matPrefix [color]="color">{{icon.length ? icon : 'help_outline'}}</mat-icon>
     </div>
     <mat-form-field class="icon-list-form-field" [appearance]="appearance" [color]="color">
-      <input autofocus [formControl]="filterInput" matInput [placeholder]="icon || 'Select an icon...'" autocomplete="off">
+      <input autofocus [formControl]="filterInput" matInput [placeholder]="icon || 'Select an icon...'"
+        autocomplete="off">
       <button matSuffix (click)="filterInput.setValue('')" *ngIf="filterInput.value.length" mat-icon-button>
         <mat-icon>close</mat-icon>
       </button>
@@ -18,6 +19,7 @@
     </div>
   </div>
   <div class="icon-list-controls-bottom">
-    <mat-paginator [length]="filteredIconslength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [hidePageSize]="hidePageSize"></mat-paginator>
+    <mat-paginator [length]="filteredIconslength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      [hidePageSize]="hidePageSize" (page)="pageEvent$.next($event)"></mat-paginator>
   </div>
 </div>
