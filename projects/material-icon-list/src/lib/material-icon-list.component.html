@@ -1,19 +1,19 @@
 <div class="icon-list-card" (click)="$event.stopPropagation()">
-  <div class="icon-list-controls padded">
+  <div class="icon-list-controls">
     <div class="icon-list-icon">
-      <mat-icon matPrefix [color]="color">{{icon.length ? icon : 'help_outline'}}</mat-icon>
-    </div>
-    <mat-form-field class="icon-list-form-field" [appearance]="appearance" [color]="color">
-      <input autofocus [formControl]="filterInput" matInput [placeholder]="icon || 'Select an icon...'"
-        autocomplete="off">
-      <button matSuffix (click)="filterInput.setValue('')" *ngIf="filterInput.value.length" mat-icon-button>
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
+    <mat-icon matPrefix [color]="color">{{icon.length ? icon : 'help_outline'}}</mat-icon>
   </div>
-  <div class="icon-list-content">
+  <mat-form-field class="icon-list-form-field" [appearance]="appearance" [color]="color">
+    <input autofocus [formControl]="filterInput" matInput [placeholder]="icon || 'Select an icon...'"
+      autocomplete="off">
+    <button matSuffix (click)="filterInput.setValue('')" *ngIf="filterInput.value.length" mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+  <div class="icon-list-content" *ngIf="filteredIcon$ | async as filteredIcons">
     <div class="icon-list-content-wrapper">
-      <button mat-icon-button *ngFor="let i of (filteredIcons | async)">
+      <button mat-icon-button *ngFor="let i of filteredIcons">
         <mat-icon (click)="selectIcon(i.name)" [color]="color">{{i.name}}</mat-icon>
       </button>
     </div>

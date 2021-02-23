@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { map, startWith, tap } from "rxjs/operators";
 import { FormControl } from '@angular/forms';
@@ -23,40 +22,39 @@ export class MaterialIconListComponent implements OnInit {
   @Input() sortBy: 'name' | 'version' | 'popularity' = 'popularity'
   @Input() hidePageSize: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
-  // MatPaginator Output
-  pageEvent$: BehaviorSubject<PageEvent> = new BehaviorSubject<PageEvent>({ pageIndex: 0, length: 0, pageSize: this.pageSize, previousPageIndex: 0});
-  // @ViewChild(MatSort) sort: MatSort | null = null;
-  iconMetdata: IconMetadata = iconMetdata;
-  filterInput: FormControl = new FormControl('');
-  filteredIcons: Observable<IconElement[]> | null = null;
+  filteredIcon$: Observable<IconElement[]> | null = null;
   filteredIconslength: number = 0;
+  filterInput: FormControl = new FormControl('');
+  pageEvent$: BehaviorSubject<PageEvent>;
+  private icons: IconElement[] = iconMetdata.icons;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor() {
+    this.pageEvent$ = new BehaviorSubject<PageEvent>({ length: iconMetdata.icons.length, pageSize: this.pageSize, pageIndex: 0, previousPageIndex: 0 });
+  }
 
   ngOnInit() {
+    this.pageEvent$.next({...this.pageEvent$.value, pageSize: this.pageSize});
     if (this.sortBy === 'popularity') {
-      this.iconMetdata.icons = this.iconMetdata.icons.sort((a, b) => b.popularity - a.popularity);
+      this.icons = this.icons.sort((a, b) => b.popularity - a.popularity);
     } else if (this.sortBy === 'name') {
-      this.iconMetdata.icons = this.iconMetdata.icons.sort();
+      this.icons = this.icons.sort();
     } else if (this.sortBy === 'version') {
-      this.iconMetdata.icons = this.iconMetdata.icons.sort((a, b) => b.version - a.version);
+      this.icons = this.icons.sort((a, b) => b.version - a.version);
     }
 
-    this.filteredIcons = merge(...[
+    this.filteredIcon$ = merge(...[
       this.filterInput.valueChanges.pipe(startWith(''), tap(() => this.paginator?.firstPage())),
       this.pageEvent$.asObservable()
     ]).pipe(
-      map(([value, page]) => {
+      map(() => {
         const lower = this.filterInput.value.toLowerCase();
-        return this.iconMetdata.icons.filter((icon: IconElement) => {
-          let match = false;
-          match = icon.name.toLowerCase().includes(lower);
-          if (!match && icon.tags.length) {
+        return this.icons.filter((icon: IconElement) => {
+          if (icon.name.toLowerCase().includes(lower)) {
+            return true;
+          } else if (icon.tags.length) {
             return icon.tags.reduce((acc, tag) => tag.toLowerCase().includes(lower), new Boolean(false));
           }
-          return match;
+          return false;
         });
       }),
       tap((icons) => this.filteredIconslength = icons.length),

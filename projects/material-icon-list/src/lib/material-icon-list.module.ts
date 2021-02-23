@@ -1,24 +1,20 @@
 import { NgModule } from '@angular/core';
 import { MaterialIconListComponent } from './material-icon-list.component';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     MaterialIconListComponent
   ],
   imports: [
+    CommonModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
