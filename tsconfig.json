@@ -9,6 +9,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "paths": {
       "material-icon-list": [
         "dist/material-icon-list/material-icon-list",

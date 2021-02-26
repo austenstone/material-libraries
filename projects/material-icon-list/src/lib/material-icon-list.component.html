@@ -1,4 +1,4 @@
-<div class="icon-list-card" (click)="$event.stopPropagation()">
+<div class="icon-list-card" (click)="$event.stopPropagation()" [style.color]="styleColor">
   <div class="icon-list-controls">
     <div class="icon-list-icon">
     <mat-icon matPrefix [color]="color">{{icon.length ? icon : 'help_outline'}}</mat-icon>

@@ -1,6 +1,6 @@
 <h1>List</h1>
 <mat-card  style="width: 432px">
-  <app-material-icon-list [(icon)]="icon"></app-material-icon-list>
+  <material-icon-list [(icon)]="icon"></material-icon-list>
 </mat-card>
 
 <h1>Button</h1>
@@ -8,12 +8,30 @@
   <mat-icon>{{icon}}</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <app-material-icon-list [(icon)]="icon" [pageSize]="28" [pageSizeOptions]="[7,14,28,56]" [hidePageSize]="true" (iconChange)="menuTrigger.closeMenu()"></app-material-icon-list>
+  <material-icon-list [(icon)]="icon" [pageSize]="30" [hidePageSize]="true" (iconChange)="menuTrigger.closeMenu()"></material-icon-list>
 </mat-menu>
 
 <h1>Custom Settings</h1>
 <mat-card>
-  <app-material-icon-list [(icon)]="icon" color="accent" appearance="standard" sortBy="name"></app-material-icon-list>
+  <material-icon-list [(icon)]="icon" color="accent"></material-icon-list>
+</mat-card>
+
+<h1>Custom Color</h1>
+<mat-card>
+  <material-icon-list [(icon)]="icon" [styleColor]="'#3ff'"></material-icon-list>
+</mat-card>
+
+<h1>Sort By</h1>
+<mat-button-toggle-group #group="matButtonToggleGroup" value="name">
+  <mat-button-toggle value="name" aria-label="Name">
+    Name
+  </mat-button-toggle>
+  <mat-button-toggle value="popularity" aria-label="Popularity">
+    Popularity
+  </mat-button-toggle>
+</mat-button-toggle-group>
+<mat-card>
+  <material-icon-list [(icon)]="icon" [sortBy]="group.value"></material-icon-list>
 </mat-card>
 
 <router-outlet></router-outlet>
