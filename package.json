@@ -1,6 +1,24 @@
 {
   "name": "material-libraries",
   "version": "0.0.0",
+  "description": "A collection of material based angular libraries.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astone2014/material-libraries.git"
+  },
+  "keywords": [
+    "Material",
+    "Icon",
+    "Picker",
+    "Angular"
+  ],
+  "author": "Austen Stone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astone2014/material-libraries/issues"
+  },
+  "homepage": "https://github.com/astone2014/material-libraries#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
