@@ -1,9 +1,24 @@
 {
   "name": "material-icon-list",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": {
     "name": "Austen Stone"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astone2014/material-libraries.git"
+  },
+  "keywords": [
+    "Material",
+    "Icon",
+    "Picker",
+    "Angular"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astone2014/material-libraries/issues"
+  },
+  "homepage": "https://github.com/astone2014/material-libraries/tree/master/projects/material-icon-list",
   "scripts": {
     "publish": "npm run package && npm run npm_publish",
     "package": "ng build material-icon-list --prod && npm run copy-readme && npm run npm_pack",
