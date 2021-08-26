@@ -1,6 +1,6 @@
 {
   "name": "material-icon-list",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": {
     "name": "Austen Stone"
   },
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/astone2014/material-libraries/issues"
   },
-  "homepage": "https://github.com/astone2014/material-libraries/tree/master/projects/material-icon-list",
+  "homepage": "https://github.com/astone2014/material-libraries/tree/main/projects/material-icon-list",
   "scripts": {
     "publish": "npm run package && npm run npm_publish",
     "package": "ng build material-icon-list --prod && npm run copy-readme && npm run npm_pack",
