@@ -65,7 +65,6 @@
             "main": "projects/material-icon-list-demo/src/main.ts",
             "polyfills": "projects/material-icon-list-demo/src/polyfills.ts",
             "tsConfig": "projects/material-icon-list-demo/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/material-icon-list-demo/src/favicon.ico",
               "projects/material-icon-list-demo/src/assets"
@@ -73,7 +72,13 @@
             "styles": [
               "projects/material-icon-list-demo/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -103,7 +108,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
