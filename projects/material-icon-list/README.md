@@ -22,3 +22,6 @@ Simple material icon picker.
 ```typescript
 <app-material-icon-list [(icon)]="icon" color="accent" appearance="standard"></app-material-icon-list>
 ```
+
+## More Information
+* `icons.json` file is fetched from Google [fonts.google.com/metadata/fonts](https://fonts.google.com/metadata/fonts)
