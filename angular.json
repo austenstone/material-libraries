@@ -46,12 +46,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/material-icon-list-demo",
+            "outputPath": {
+              "base": "dist/material-icon-list-demo"
+            },
             "index": "projects/material-icon-list-demo/src/index.html",
-            "main": "projects/material-icon-list-demo/src/main.ts",
-            "polyfills": "projects/material-icon-list-demo/src/polyfills.ts",
+            "polyfills": [
+              "projects/material-icon-list-demo/src/polyfills.ts"
+            ],
             "tsConfig": "projects/material-icon-list-demo/tsconfig.app.json",
             "assets": [
               "projects/material-icon-list-demo/src/favicon.ico",
@@ -62,12 +65,11 @@
               "projects/material-icon-list-demo/src/styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/material-icon-list-demo/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -82,8 +84,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
