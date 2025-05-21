@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -27,7 +27,7 @@ export class MaterialIconListComponent implements OnInit, OnChanges {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   filteredIcon$: Observable<IconElement[]> | null = null;
   filteredIconslength = 0;
-  filterInput: FormControl = new FormControl('');
+  filterInput: UntypedFormControl = new UntypedFormControl('');
   pageEvent$: BehaviorSubject<PageEvent>;
   refreshEvent$: EventEmitter<any> = new EventEmitter();
   private icons: IconElement[] = iconMetdata.icons;
