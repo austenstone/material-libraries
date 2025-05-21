@@ -3,11 +3,11 @@ import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 import { UntypedFormControl } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
-import { MatLegacyFormFieldAppearance as MatFormFieldAppearance } from '@angular/material/legacy-form-field';
-import { MatLegacyPaginator as MatPaginator, LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 // import { MatSort } from '@angular/material/sort';
 import { IconElement, IconMetadata } from './material-icons';
 import iconMetdata from './icons.json';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'material-icon-list',
