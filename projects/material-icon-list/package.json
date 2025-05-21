@@ -27,8 +27,8 @@
     "npm_publish": "cd ./../../dist/material-icon-list && npm publish"
   },
   "peerDependencies": {
-    "@angular/common": ">=14",
-    "@angular/core": ">=14",
+    "@angular/common": ">=15",
+    "@angular/core": ">=15",
     "@angular/material": ">=14"
   },
   "dependencies": {
