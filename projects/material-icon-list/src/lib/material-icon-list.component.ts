@@ -10,9 +10,10 @@ import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'material-icon-list',
-  templateUrl: './material-icon-list.component.html',
-  styleUrls: ['./material-icon-list.component.scss']
+    selector: 'material-icon-list',
+    templateUrl: './material-icon-list.component.html',
+    styleUrls: ['./material-icon-list.component.scss'],
+    standalone: false
 })
 export class MaterialIconListComponent implements OnInit, OnChanges {
   @Input() icon = '';
