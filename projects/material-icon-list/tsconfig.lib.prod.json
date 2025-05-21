@@ -7,6 +7,6 @@
     "esModuleInterop": true,
   },
   "angularCompilerOptions": {
-    "enableIvy": false
+    "compilationMode": "partial"
   }
 }

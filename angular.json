@@ -31,18 +31,6 @@
             "tsConfig": "projects/material-icon-list/tsconfig.spec.json",
             "karmaConfig": "projects/material-icon-list/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/material-icon-list/tsconfig.lib.json",
-              "projects/material-icon-list/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -143,19 +131,6 @@
               "projects/material-icon-list-demo/src/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/material-icon-list-demo/tsconfig.app.json",
-              "projects/material-icon-list-demo/tsconfig.spec.json",
-              "projects/material-icon-list-demo/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
