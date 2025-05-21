@@ -102,18 +102,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "material-icon-list-demo:build"
+            "buildTarget": "material-icon-list-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "material-icon-list-demo:build:production"
+              "buildTarget": "material-icon-list-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-icon-list-demo:build"
+            "buildTarget": "material-icon-list-demo:build"
           }
         },
         "test": {
