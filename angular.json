@@ -58,6 +58,7 @@
               "projects/material-icon-list-demo/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/material-icon-list-demo/src/styles.scss"
             ],
             "scripts": [],

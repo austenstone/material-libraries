@@ -89,6 +89,7 @@ export class MaterialIconListComponent implements OnInit, OnChanges {
   }
 
   selectIcon(icon: string): void {
+    console.log('Selected icon:', icon);
     this.icon = icon;
     this.iconChange.emit(icon);
   }

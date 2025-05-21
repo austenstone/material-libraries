@@ -13,8 +13,8 @@
 </div>
   <div class="icon-list-content" *ngIf="filteredIcon$ | async as filteredIcons">
     <div class="icon-list-content-wrapper">
-      <button type="button" mat-icon-button *ngFor="let i of filteredIcons">
-        <mat-icon (click)="selectIcon(i.name)" [color]="color">{{i.name}}</mat-icon>
+      <button (click)="selectIcon(i.name)" type="button" mat-icon-button *ngFor="let i of filteredIcons">
+        <mat-icon [color]="color">{{i.name}}</mat-icon>
       </button>
     </div>
   </div>
